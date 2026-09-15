@@ -1,0 +1,30 @@
+# Configurações do serviço product-composite
+# Porta padrão definida no contrato da aula: 7000
+server.port: 7000
+
+spring:
+  application:
+    # Nome registrado no Eureka Discovery e no Gateway
+    name: product-composite
+  # Para ativar a integração real na próxima aula (quando os núcleos estiverem rodando),
+  # descomente a linha abaixo ou execute com o argumento: --spring.profiles.active=real
+  # profiles:
+  #   active: real
+
+eureka:
+  client:
+    # URL do servidor de Service Discovery (Eureka Server - Grupo 5 na porta 8761)
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    # Habilita o registro e busca de outros serviços no Eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    # Preferir usar o IP na comunicação entre contêineres e instâncias
+    prefer-ip-address: true
+
+# Configuração de logs para facilitar a visualização no terminal durante o workshop
+logging:
+  level:
+    root: INFO
+    se.magnus: DEBUG
